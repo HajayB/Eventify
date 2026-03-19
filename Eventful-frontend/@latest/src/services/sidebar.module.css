@@ -1,0 +1,146 @@
+/* Top bar (mobile) */
+.topBar {
+  display: none;
+   
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #0b2732, #13272e, #1d3b48);
+  color: white;
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.logoMobile {
+  margin-left: 12px;
+  font-weight: bold;
+}
+.logo{
+align-items: center;
+margin-bottom: 30px;
+}
+
+.logo h1{
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: white;
+  margin: 0;
+  cursor: default;
+  user-select: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.logo h1:hover{
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
+.logo span{
+  color: #4fd1c5;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: 100vh;
+    width: 240px;
+    background:linear-gradient(135deg, #04090b, #13272e, #1d3b48);
+    padding: 20px;
+    position: fixed;   
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000;  
+}
+
+/* Open / Close states */
+.open {
+  transform: translateX(0);
+}
+
+.closed {
+  transform: translateX(-100%);
+}
+
+/* Links */
+.link {
+  display: block;
+  padding: 20px;
+  margin-top:50px;
+  color: #aaa;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: 0.2s;
+}
+
+.link:hover {
+  background: #939393;
+  color: white;
+}
+
+/* Active link */
+.active {
+  display: block;
+  padding: 12px;
+  background: #fff;
+  color: #111;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Overlay (mobile only) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: hsl(359, 80%, 65%);
+  font-size: 19px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin:auto;
+}
+
+/* Hover */
+.logoutBtn:hover {
+  background: #939393;
+}
+/* Responsive */
+@media (max-width: 1024px) {
+  .topBar {
+    display: flex;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}

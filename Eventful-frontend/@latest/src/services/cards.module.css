@@ -1,0 +1,30 @@
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #999;
+}
+
+.extra {
+  margin-top: 10px;
+}
