@@ -1,7 +1,9 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import EventsPagePublic from "./features/Events/eventsPagePublic";
 import SignupPage from "./features/Authentication/signup";
-import LoginPage from "./features/Authentication/login"
+import LoginPage from "./features/Authentication/login";
+import ResetPasswordPage from "./features/Authentication/resetPassword";
+import ResetPasswordFormPage from "./features/Authentication/resetPasswordForm"
 import UpcomingEvents from "./features/Events/upcomingEvents";
 import LandingPage from "./features/Home/landingPage";
 import CreatorDashboard from "./features/Dashboard/CreatorDashboard";
@@ -16,6 +18,8 @@ function App(){
       <Route path="/events" element={<div className="events-wrapper"> <EventsPagePublic /></div>} />  
       <Route path="/register" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/reset-password-link" element={<ResetPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordFormPage />} />
       <Route path="/upcomingevents" element={<UpcomingEvents />} />
       <Route path="/" element={<LandingPage />} />
       <Route path="/creator/dashboard" element={<CreatorDashboard />} />

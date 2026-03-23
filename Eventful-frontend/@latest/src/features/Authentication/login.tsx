@@ -6,7 +6,8 @@ import axios from "axios";
 
 
 function LoginPage(){
-    const url = "http://localhost:4000/api/auth/login";
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const url = baseUrl+"/auth/login";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let navigate = useNavigate();
@@ -20,6 +21,7 @@ function LoginPage(){
     function handleLogoClick (){
         navigate("/");
     }
+    
 
     function displayMessage(message:string, type = "success") {
         const element = document.createElement("p");
@@ -39,16 +41,13 @@ function LoginPage(){
     async function handleFormSubmit(e: any){
         e.preventDefault();
         try{
-            const response = await axios.post(url, {
-            email, password
-        })
+            const response = await axios.post(url, 
+            {email, password}, { withCredentials: true })
         const data = response.data;
 
         if(response.status>= 200 && response.status < 300){
             displayMessage(data.message, "success");
             if(data.user.role==="CREATOR"){
-                // Save token (string)
-                localStorage.setItem("creatorToken", data.token);
                 // Save user (object → must stringify)
                 localStorage.setItem("creator", JSON.stringify(data.user));
                 setTimeout(() => {
@@ -56,8 +55,6 @@ function LoginPage(){
             }, 4000);
             }
             else{
-                // Save token (string)
-                localStorage.setItem("eventeeToken", data.token);
                 // Save user (object → must stringify)
                 localStorage.setItem("eventee", JSON.stringify(data.user));                
                 setTimeout(() => {
@@ -72,8 +69,7 @@ function LoginPage(){
             error.response?.data?.message || "Something went wrong",
             "error"
             );
-        }      
-        
+        }   
     }
 
 
@@ -91,9 +87,10 @@ function LoginPage(){
 
                 <input value={password} onChange={handlePasswordChange} type="password" placeholder="Password"/><br></br>
                 
+                <p className={styles.resetPass}>Forgot Password? <Link to="/reset-password-link" className={styles.linkColor}>Reset Password</Link></p>
                 <button type="submit" >Login</button>
 
-                <p className={styles.switchAuth}>Want a new account? <Link to="/register">Sign Up</Link></p>
+                <p className={styles.switchAuth}>Want a new account? <Link to="/register" className={styles.linkColor}>Sign Up</Link></p>
                 </form>
             </div>
         </>

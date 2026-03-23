@@ -29,9 +29,10 @@ export async function getEvents(page: number = 1, search:string=""): Promise<Get
     params: { page, search }
   });
 
+  
   return {
-    events: response.data.events,
-    pagination: response.data.pagination
+    events: response.data.data,
+    pagination: response.data.meta
   };
 }
 

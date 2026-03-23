@@ -1,11 +1,10 @@
-import axios from "axios";
-
-type UpcomingEvents = {
+import axiosInstance from "../../services/axiosInstance";
+type UpcomingEvent = {
     eventId: string,
     title:string,
     location:string,
     startTime: string,
-    endTime: string,
+    endTime: string, 
     ticketCount: number,
 }
 type Stats={
@@ -22,34 +21,22 @@ type PaymentHistory = {
 }
 export type GetEventeeResponse ={
     userName :string, 
-    upComingEvents:UpcomingEvents[],
-    stats:Stats[],
+    upcomingEvents:UpcomingEvent[],
+    stats:Stats,
     paymentHistory:PaymentHistory[],
 }
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-const eventeeUrl = baseUrl +"/dashboard";
-
-
-
 export async function EventeeDashboardData ():Promise<GetEventeeResponse>{
-    const token = localStorage.getItem("eventeeToken") || sessionStorage.getItem("eventeeToken");
-if (!token){
-    alert("No token provided");
-    window.location.href = "http://localhost:5173"
-
-}
-
-const headers = {
-    "Content-Type":"application/json",
-    Authorization:`Bearer ${token}`
-}
-    const response = await axios.get(eventeeUrl, {headers});
-
-    return {
-        userName:response.data.userName,
-        upComingEvents:response.data.upcomingEvents,
-        stats:response.data.stats,
-        paymentHistory:response.data.paymentHistory,
-    }
+    try{
+        const response = await axiosInstance.get("/dashboard");
+        return {
+            userName:response.data.userName,
+            upcomingEvents:response.data.upcomingEvents,
+            stats:response.data.stats,
+            paymentHistory:response.data.paymentHistory,
+        }
+    }catch (error: any) {
+    console.log(error);
+    throw error;
+  }
 }

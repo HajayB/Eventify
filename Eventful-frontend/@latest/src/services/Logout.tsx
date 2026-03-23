@@ -2,17 +2,22 @@ import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const logoutUrl = baseUrl +"/auth/logout";
+export type GetLogoutResponse ={
+    message :string, 
 
-export async function Logout(){
-    const token = localStorage.getItem("creatorToken") || sessionStorage.getItem("creatorToken");
-if (!token){
-    alert("No token provided");
 }
-
-const headers = {
-    "Content-Type":"application/json",
-    Authorization:`Bearer ${token}`
+export async function Logout():Promise<GetLogoutResponse>{
+try{
+const response = await axios.post(logoutUrl, {}, {withCredentials:true})
+localStorage.clear();
+sessionStorage.clear();
+console.log(response.data.message)
+    return {
+        message:response.data.message
+    }
 }
-const response = await axios.post(logoutUrl, {headers})
+catch(error:any){
+    throw error
+}
 
 }

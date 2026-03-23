@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import styles from "./sidebar.module.css";
-
+import {Logout} from "./Logout";
 type MenuItem = {
   name: string;
   path: string;
@@ -13,6 +13,7 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ menu }: SidebarProps) {
+  const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(true);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
@@ -38,9 +39,14 @@ export default function Sidebar({ menu }: SidebarProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-//   async function handleLogoutBtn(e: any){
-//     e.preventDefault();
-//   }
+  async function handleLogoutBtn(e: any){
+    e.preventDefault();
+
+    await Logout();
+    setTimeout(()=>{
+      navigate("/")
+    },1000)
+  }
 
   return (
     <>
@@ -82,7 +88,7 @@ export default function Sidebar({ menu }: SidebarProps) {
             </NavLink>
           ))}
         </nav>
-        <button className={styles.logoutBtn}>
+        <button className={styles.logoutBtn} onClick={handleLogoutBtn}>
             <FaSignOutAlt />
             Logout
         </button>

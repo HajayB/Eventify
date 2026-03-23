@@ -10,6 +10,7 @@ type MiniCardProps = {
 
 function MiniCard({ title, value, subtitle, icon, children }: MiniCardProps) {
   return (
+
     <div className={styles.card}>
       <div className={styles.header}>
         <span className={styles.title}>{title}</span>

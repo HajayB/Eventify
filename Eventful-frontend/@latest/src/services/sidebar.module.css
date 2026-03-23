@@ -1,7 +1,6 @@
 /* Top bar (mobile) */
 .topBar {
   display: none;
-   
   padding: 12px 16px;
   background: linear-gradient(135deg, #0b2732, #13272e, #1d3b48);
   color: white;

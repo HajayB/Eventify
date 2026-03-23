@@ -5,24 +5,33 @@
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 15px;
+  max-width: 250px;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.icon{
+  font-size: 20px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 14px;
   color: #666;
+  gap:10px;
 }
 
 .value {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .subtitle {
-  font-size: 13px;
-  color: #999;
+  font-size: 19px;
+  color: #5f5757;
 }
 
 .extra {

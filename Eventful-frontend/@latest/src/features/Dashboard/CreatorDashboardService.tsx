@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import axiosInstance from "../../services/axiosInstance";
 type UpcomingEvents = {
     eventId: string,
     title:string,
@@ -10,7 +9,7 @@ type UpcomingEvents = {
 type CheckedIn={
     eventId: string,
     title:string,
-    ticketsSold:number,
+    ticketsSold:number, 
     checkedIn:number
 }
 type EventAttention = {
@@ -23,6 +22,9 @@ type EventAttention = {
 type RecentActivity = {
     eventTitle:string,
     purchasedAt:string,
+    // quantity:number,
+    amount:number,
+    summary:string,
 }
 export type GetCreatorResponse ={
     userName :string, 
@@ -31,34 +33,21 @@ export type GetCreatorResponse ={
     checkInSummary:CheckedIn[],
     eventsNeedingAttention:EventAttention[],
     recentActivity:RecentActivity[],
-}
-
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-const creatorUrl = baseUrl +"/dashboard/creator";
-
-
-
-export async function CreatorDashboardData ():Promise<GetCreatorResponse>{
-    const token = localStorage.getItem("creatorToken") || sessionStorage.getItem("creatorToken");
-if (!token){
-    alert("No token provided");
-    window.location.href = "http://localhost:5173"
-
-}
-
-const headers = {
-    "Content-Type":"application/json",
-    Authorization:`Bearer ${token}`
-}
-    const response = await axios.get(creatorUrl, {headers});
+} 
+export async function CreatorDashboardData(): Promise<GetCreatorResponse> {
+  try {
+    const response = await axiosInstance.get("/creator/dashboard");
 
     return {
-        userName:response.data.userName,
-        stats:response.data.stats,
-        upComingEvents:response.data.upcomingEvents,
-        checkInSummary:response.data.checkInSummary,
-        eventsNeedingAttention:response.data.eventsNeedingAttention,
-        recentActivity:response.data.recentActivity
-    }
+      userName: response.data.userName,
+      stats: response.data.stats,
+      upComingEvents: response.data.upcomingEvents,
+      checkInSummary: response.data.checkInSummary,
+      eventsNeedingAttention: response.data.eventsNeedingAttention,
+      recentActivity: response.data.recentActivity,
+    };
+  } catch (error: any) {
+    console.log(error);
+    throw error;
+  }
 }
-

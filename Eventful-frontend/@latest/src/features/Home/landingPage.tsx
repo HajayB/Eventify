@@ -1,7 +1,7 @@
 import styles from "./landingpage.module.css"
 import {useState} from "react";
 import { FaBars } from "react-icons/fa";
-import UpcomingEvents from "../events/upcomingEvents";
+import UpcomingEvents from "../Events/upcomingEvents"
 import{Link,useNavigate} from "react-router-dom";
 import axios from "axios";
 
