@@ -4,11 +4,14 @@ type ActivityCardProps = {
   icon?: React.ReactNode;
   date?:string, 
   amount?:number,
-  summary?:string,
+  summary?:string|number,
+  ticketsSold?:number,
+  quantity?:number|string,
+  checkedIn?:number,
   children?: React.ReactNode;
 };
 
-function ActivityCard({eventTitle, icon, date, amount, summary, children }: ActivityCardProps) {
+function ActivityCard({eventTitle, icon, date, amount, summary, quantity, children }: ActivityCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -19,6 +22,7 @@ function ActivityCard({eventTitle, icon, date, amount, summary, children }: Acti
             ₦{amount.toLocaleString()}
           </span>
         )}
+        {quantity && <h3 className={styles.quantity}>{quantity}</h3>}
         <span className={styles.title}>{eventTitle}</span>
       </div>
 

@@ -3,7 +3,7 @@ import styles from "./cards.module.css";
 type MiniCardProps = {
   title: string;
   value?: string | number;
-  subtitle?: string;
+  subtitle?: string|number;
   icon?: React.ReactNode;
   children?: React.ReactNode;
 };

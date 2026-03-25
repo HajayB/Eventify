@@ -14,7 +14,7 @@ type Stats={
 type PaymentHistory = {
     amount:number,
     reference:string,
-    quantity:number,
+    quantity:number|string,
     paidAt:string,
     eventTitle:string,
     eventDate:string,

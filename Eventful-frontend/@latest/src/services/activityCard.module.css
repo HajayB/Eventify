@@ -2,14 +2,24 @@
   display: grid;
   grid-template-columns: auto auto 0.08fr;
   grid-template-areas:
-    "icon summary amount"
-    "title title title";
+    "title title title"
+    "summary summary amount"
+    "quantity quantity date"
+    
+    ;
   gap: 4px 10px;
   align-items: center;
 }
 
 .summary {
   grid-area: summary;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  color:#e5e7eb;
+}
+.quantity {
+  grid-area: quantity;
   font-size: 15px;
   font-weight: 400;
   margin: 0;
@@ -44,6 +54,7 @@
 }
 
 .date {
+  grid-area: date;
   font-size: 12px;
   opacity: 0.5;
   margin: 0;
