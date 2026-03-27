@@ -1,0 +1,256 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 28px;
+}
+
+/* ── STAT CARDS ── */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a9cb8;
+}
+
+.statValue {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  line-height: 1;
+}
+
+.warnValue {
+  color: #f6ad55;
+}
+
+/* ── ATTENDANCE BAR ── */
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.rateRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4fd1c5, #4f8ef7);
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.rateLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  min-width: 40px;
+  text-align: right;
+}
+
+.rateSubtext {
+  font-size: 0.83rem;
+  color: #7a9cb8;
+}
+
+/* ── TABS ── */
+
+.tabBar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #a8c0cc;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.tabActive {
+  background: rgba(79, 142, 247, 0.15);
+  border-color: #4f8ef7;
+  color: #4f8ef7;
+}
+
+/* ── CARDS ── */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  gap: 16px;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: rgba(79, 209, 197, 0.25);
+}
+
+.cardLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cardTitle {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.83rem;
+  color: #a8c0cc;
+}
+
+.cardMeta span {
+  color: #4fd1c5;
+  font-weight: 600;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.cardRef {
+  font-size: 0.75rem;
+  color: #4a6d82;
+  margin-top: 2px;
+  font-family: monospace;
+}
+
+/* ── BADGES ── */
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.badgeUsed {
+  background: rgba(104, 211, 145, 0.15);
+  color: #68d391;
+  border: 1px solid rgba(104, 211, 145, 0.3);
+}
+
+.badgeUpcoming {
+  background: rgba(79, 142, 247, 0.12);
+  color: #4f8ef7;
+  border: 1px solid rgba(79, 142, 247, 0.3);
+}
+
+.badgeMissed {
+  background: rgba(252, 129, 129, 0.12);
+  color: #fc8181;
+  border: 1px solid rgba(252, 129, 129, 0.3);
+}
+
+.badgePending {
+  background: rgba(246, 173, 85, 0.12);
+  color: #f6ad55;
+  border: 1px solid rgba(246, 173, 85, 0.3);
+}
+
+/* ── EMPTY ── */
+
+.emptyText {
+  color: #7a9cb8;
+  font-size: 0.9rem;
+  padding: 32px 0;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 1024px) {
+  .content { margin-left: 10px; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+}

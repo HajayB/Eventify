@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Skeleton from "../../components/Skeleton";
 import axiosInstance from "../../services/axiosInstance";
 import Sidebar from "../../services/sideBar";
 import { creatorMenu } from "../../services/sideBarData";
@@ -104,9 +105,26 @@ function CreatorEventPage(){
         useEffect(()=>{
             loadCreatorData();
         },[])
-    if (!creatorData) return <p>Loading...</p>;
-    if (loading) {
-        return <p>Loading ...</p>;
+    if (loading || !creatorData) {
+        return (
+            <div className={styles.container}>
+                <Sidebar menu={creatorMenu} />
+                <main className={styles.content}>
+                    <Skeleton height="22px" width="180px" style={{ marginBottom: "20px" }} />
+                    <div className={styles.createEvent}>
+                        {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+                            <Skeleton key={i} height="44px" borderRadius="6px" />
+                        ))}
+                    </div>
+                    <Skeleton height="22px" width="180px" style={{ marginBottom: "20px" }} />
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px" }}>
+                        {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <Skeleton key={i} height="360px" borderRadius="12px" />
+                        ))}
+                    </div>
+                </main>
+            </div>
+        );
     }
 
 

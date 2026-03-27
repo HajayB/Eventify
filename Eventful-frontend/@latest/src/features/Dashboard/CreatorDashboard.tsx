@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Skeleton from "../../components/Skeleton";
 import {CreatorDashboardData, type GetCreatorResponse } from "./CreatorDashboardService";
 import MiniCard from "../../services/MiniCards";
 import ActivityCard from "../../services/ActivityCard";
@@ -20,9 +21,39 @@ function CreatorDashboard(){
         loadCreatorData();
     },[])
 
-    if (!creatorData) return <p>Loading...</p>;
-  if (loading) {
-    return <p>Loading ...</p>;
+  if (loading || !creatorData) {
+    return (
+      <div className={styles.container}>
+        <Sidebar menu={creatorMenu} />
+        <main className={styles.content}>
+          <Skeleton height="24px" width="220px" style={{ margin: "17px 30px 30px" }} />
+          <div className={styles.statSection}>
+            {[0, 1, 2].map((i) => (
+              <div key={i} style={{ background: "white", borderRadius: "10px", padding: "20px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                <Skeleton height="13px" width="75%" variant="light" />
+                <Skeleton height="28px" width="50%" variant="light" />
+              </div>
+            ))}
+          </div>
+          <Skeleton height="18px" width="160px" style={{ margin: "30px 30px 20px" }} />
+          <div className={styles.upcomingEventsSection}>
+            {[0, 1, 2].map((i) => (
+              <div key={i} style={{ background: "white", borderRadius: "10px", padding: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Skeleton height="13px" width="70%" variant="light" />
+                <Skeleton height="20px" width="55%" variant="light" />
+                <Skeleton height="12px" width="40%" variant="light" />
+              </div>
+            ))}
+          </div>
+          <Skeleton height="18px" width="180px" style={{ margin: "30px 30px 16px" }} />
+          <div className={styles.recentActivitySection}>
+            {[0, 1, 2, 3].map((i) => (
+              <Skeleton key={i} height="72px" borderRadius="10px" style={{ marginBottom: "8px" }} />
+            ))}
+          </div>
+        </main>
+      </div>
+    );
   }
 
   const demoData = [

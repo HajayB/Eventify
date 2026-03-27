@@ -1,7 +1,8 @@
-//Upcoming events cards 
+//Upcoming events cards
 import {useEffect, useState} from "react";
 import { getEvents, type EventsType } from "./EventsService";
 import EventCards from "../../features/Events/Event-cards";
+import EventCardSkeleton from "../../components/EventCardSkeleton";
 
 function UpcomingEvents(){
     const [events, setEvents] = useState<EventsType[]>([]);
@@ -24,18 +25,18 @@ function UpcomingEvents(){
         new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
     )
     .slice(0, 3);
-    if (loading) {
-        return <p>Loading events...</p>;
-    }
     return (
         <div className="events-section">
 
         <h1 className="events-title" style={{color:"white"}}>Upcoming events</h1>
 
         <div className="events-wrapper">
-            {upcomingEvents.map((event, index) => (
-            <EventCards key={index} {...event} />
-            ))}
+            {loading
+              ? [0, 1, 2].map((i) => <EventCardSkeleton key={i} />)
+              : upcomingEvents.map((event, index) => (
+                  <EventCards key={index} {...event} />
+                ))
+            }
         </div>
 
         </div>

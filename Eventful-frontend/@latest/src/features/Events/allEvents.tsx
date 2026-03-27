@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getEvents, type EventsType } from "./EventsService";
 import styles from "./eventspage.module.css";
 import EventCards from "./Event-cards";
+import EventCardSkeleton from "../../components/EventCardSkeleton";
+import Skeleton from "../../components/Skeleton";
  
 type Props = {
   onEventClick?: (event: EventsType) => void;
@@ -59,7 +61,16 @@ function AllEvents({ onEventClick }: Props) {
     }, [page, debouncedSearch]);
 
   if (loading) {
-    return <p>Loading events...</p>;
+    return (
+      <>
+        <div className={styles.eventsHeader}>
+          <Skeleton height="40px" borderRadius="20px" style={{ maxWidth: "200px" }} />
+        </div>
+        <div className={styles.eventsGrid}>
+          {Array.from({ length: 6 }).map((_, i) => <EventCardSkeleton key={i} />)}
+        </div>
+      </>
+    );
   }
 
 

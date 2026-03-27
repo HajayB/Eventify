@@ -49,7 +49,7 @@ const paymentsUrl = baseUrl + "/payments";
 export async function getEvents(page: number = 1, search:string=""): Promise<GetEventsResponse> {
 
   const response = await axios.get(eventsUrl, {
-    params: { page, search }
+    params: { page, search, }
   });
 
   

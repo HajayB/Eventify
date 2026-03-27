@@ -1,0 +1,284 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 28px;
+}
+
+/* ── STAT CARDS ── */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a9cb8;
+}
+
+.statValue {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  line-height: 1;
+}
+
+.warnValue {
+  color: #f6ad55;
+}
+
+/* ── SECTIONS ── */
+
+.section {
+  margin-bottom: 36px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+}
+
+/* ── ATTENDANCE RATE BAR ── */
+
+.rateRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4fd1c5, #4f8ef7);
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.rateLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  min-width: 40px;
+  text-align: right;
+}
+
+.rateSubtext {
+  font-size: 0.83rem;
+  color: #7a9cb8;
+  margin-top: 4px;
+}
+
+/* ── TABLE ── */
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: #cdd9e5;
+}
+
+.table thead tr {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.table th {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7a9cb8;
+  white-space: nowrap;
+}
+
+.row {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rowExpanded {
+  background: rgba(79, 209, 197, 0.05);
+}
+
+.table td {
+  padding: 14px 18px;
+}
+
+.eventName {
+  font-weight: 600;
+  color: white;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevronCell {
+  text-align: right;
+  color: #7a9cb8;
+}
+
+.chevron {
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.chevronUp {
+  transform: rotate(-90deg);
+}
+
+/* ── DRILL-DOWN ROW ── */
+
+.drillRow {
+  border-top: none;
+}
+
+.drillRow td {
+  padding: 0;
+}
+
+.drillContent {
+  padding: 16px 18px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(79, 209, 197, 0.15);
+}
+
+.drillStats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 14px;
+}
+
+.drillStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drillLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7a9cb8;
+}
+
+.drillVerified {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #68d391;
+}
+
+.drillUnverified {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f6ad55;
+}
+
+.drillRate {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #4fd1c5;
+}
+
+.drillBarRow .progressTrack {
+  max-width: 400px;
+}
+
+.drillLoading {
+  padding: 16px 18px;
+  color: #7a9cb8;
+  font-size: 0.85rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ── MISC ── */
+
+.status {
+  color: #cdd9e5;
+}
+
+.errorText {
+  color: #fc8181;
+}
+
+.emptyText {
+  color: #7a9cb8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 10px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .drillStats {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

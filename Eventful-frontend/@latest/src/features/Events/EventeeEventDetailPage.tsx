@@ -4,6 +4,7 @@ import { getEventById, initializePayment, type EventsType } from "./EventsServic
 import Sidebar from "../../services/sideBar";
 import { eventeeMenu } from "../../services/sideBarData";
 import styles from "./eventeeEventDetailPage.module.css";
+import Skeleton from "../../components/Skeleton";
 
 function EventeeEventDetailPage() {
   const { eventId } = useParams<{ eventId: string }>();
@@ -53,7 +54,39 @@ function EventeeEventDetailPage() {
       <div className={styles.container}>
         <Sidebar menu={eventeeMenu} />
         <main className={styles.content}>
-          <p className={styles.statusText}>Loading event...</p>
+          <Skeleton height="20px" width="80px" style={{ marginBottom: "24px" }} />
+          <Skeleton height="340px" borderRadius="12px" style={{ marginBottom: "32px" }} />
+          <div style={{ display: "flex", gap: "40px", alignItems: "flex-start" }}>
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px" }}>
+              <Skeleton height="36px" width="70%" />
+              <Skeleton height="14px" />
+              <Skeleton height="14px" width="90%" />
+              <Skeleton height="14px" width="80%" />
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "8px" }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                    <Skeleton height="10px" width="80px" />
+                    <Skeleton height="16px" width="55%" />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{
+              width: "320px", flexShrink: 0,
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: "12px", padding: "28px",
+              display: "flex", flexDirection: "column", gap: "16px",
+            }}>
+              <Skeleton height="22px" width="50%" />
+              <Skeleton height="10px" width="140px" />
+              <Skeleton height="44px" borderRadius="6px" />
+              <Skeleton height="10px" width="80px" />
+              <Skeleton height="44px" borderRadius="6px" />
+              <Skeleton height="1px" style={{ margin: "4px 0" }} />
+              <Skeleton height="48px" borderRadius="8px" />
+            </div>
+          </div>
         </main>
       </div>
     );

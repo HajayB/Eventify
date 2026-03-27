@@ -1,0 +1,228 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+}
+
+/* ── FILTER BAR ── */
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #a8c0cc;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.filterActive {
+  background: rgba(79, 142, 247, 0.15);
+  border-color: #4f8ef7;
+  color: #4f8ef7;
+}
+
+.ticketCount {
+  margin-left: auto;
+  font-size: 0.83rem;
+  color: #7a9cb8;
+}
+
+.errorText {
+  font-size: 0.88rem;
+  color: #fc8181;
+  margin-bottom: 16px;
+}
+
+/* ── GRID ── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+/* ── TICKET CARD ── */
+
+.ticketCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.ticketCard:hover {
+  border-color: rgba(79, 209, 197, 0.3);
+}
+
+.ticketUsed {
+  opacity: 0.6;
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.eventTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+}
+
+.ticketMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ticketMeta p {
+  display: flex;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: #a8c0cc;
+  align-items: flex-start;
+}
+
+.ticketMeta span {
+  flex-shrink: 0;
+}
+
+/* ── BADGES ── */
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badgeUnused {
+  background: rgba(79, 209, 197, 0.12);
+  color: #4fd1c5;
+  border: 1px solid rgba(79, 209, 197, 0.3);
+}
+
+.badgeUsed {
+  background: rgba(160, 174, 192, 0.1);
+  color: #a0aec0;
+  border: 1px solid rgba(160, 174, 192, 0.2);
+}
+
+/* ── QR SECTION ── */
+
+.qrSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+
+.qrBtn {
+  padding: 9px 16px;
+  background: rgba(79, 142, 247, 0.15);
+  border: 1px solid rgba(79, 142, 247, 0.35);
+  border-radius: 8px;
+  color: #4f8ef7;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  width: 100%;
+}
+
+.qrBtn:hover:not(:disabled) {
+  background: rgba(79, 142, 247, 0.25);
+}
+
+.qrBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qrWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.qrHint {
+  font-size: 0.78rem;
+  color: #4a5568;
+  text-align: center;
+}
+
+/* ── USED LABEL ── */
+
+.usedLabel {
+  font-size: 0.83rem;
+  color: #68d391;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+/* ── EMPTY STATE ── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 64px 24px;
+  color: #7a9cb8;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 2.4rem;
+  margin-bottom: 4px;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 1024px) {
+  .content { margin-left: 10px; }
+}

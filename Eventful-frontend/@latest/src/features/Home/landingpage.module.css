@@ -115,10 +115,92 @@ background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 
 /* ABOUT */
 
-.about{
-  padding: 60px;
+.about {
+  padding: 80px 60px;
   text-align: center;
-  color:white;
+  color: white;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aboutEyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4fd1c5;
+  margin-bottom: 14px;
+}
+
+.aboutHeading {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.aboutSubtext {
+  font-size: 1rem;
+  color: #a8c0cc;
+  line-height: 1.75;
+  max-width: 660px;
+  margin: 0 auto 48px;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  text-align: left;
+  margin-bottom: 48px;
+}
+
+.aboutCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.aboutCard:hover {
+  background: rgba(79, 209, 197, 0.06);
+  border-color: rgba(79, 209, 197, 0.35);
+}
+
+.aboutCardIcon {
+  font-size: 1.8rem;
+}
+
+.aboutCardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: white;
+}
+
+.aboutCardText {
+  font-size: 0.93rem;
+  color: #a8c0cc;
+  line-height: 1.7;
+}
+
+.aboutClosing {
+  font-size: 1rem;
+  color: #cdd9e5;
+  font-style: italic;
+}
+
+@media (max-width: 680px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutHeading {
+    font-size: 1.5rem;
+  }
 }
 
 /* CONTACT */

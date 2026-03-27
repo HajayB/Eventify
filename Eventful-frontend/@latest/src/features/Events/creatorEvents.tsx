@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getCreatorEvents, type PaginationType, type EventsType } from "./EventsService";
 import styles from "./eventspage.module.css";
 import EventCards from "./Event-cards";
+import EventCardSkeleton from "../../components/EventCardSkeleton";
+import Skeleton from "../../components/Skeleton";
 
 type Props = {
   onEventClick?: (event: EventsType) => void;
@@ -77,7 +79,19 @@ function CreatorEvents({ onEventClick }: Props) {
     setFilter(e.target.value as FilterType);
   }
 
-  if (loading) return <p>Loading events...</p>;
+  if (loading) {
+    return (
+      <>
+        <div className={styles.eventsHeader}>
+          <Skeleton height="40px" borderRadius="20px" style={{ maxWidth: "200px" }} />
+          <Skeleton height="40px" borderRadius="20px" style={{ maxWidth: "120px" }} />
+        </div>
+        <div className={styles.eventsGrid}>
+          {Array.from({ length: 6 }).map((_, i) => <EventCardSkeleton key={i} />)}
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

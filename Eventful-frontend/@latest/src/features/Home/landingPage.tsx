@@ -122,11 +122,39 @@ function LandingPage(){
       </div>
     </div>
 
-    <div className= {styles.about}>
-      <h2 id="About">About</h2>
-      <p>
-        Our platform helps you discover and manage events easily.
-        Browse upcoming events, reserve tickets, and stay updated.
+    <div className={styles.about} id="About">
+      <p className={styles.aboutEyebrow}>Why Eventify?</p>
+      <h2 className={styles.aboutHeading}>Built for people who show up — and the ones who make it happen.</h2>
+      <p className={styles.aboutSubtext}>
+        The big platforms were built for big corporations. Eventify was built for real events —
+        the kind that fill up through word of mouth, where the organiser knows half the crowd by name.
+        Simple to use, honest on fees, and actually designed for this market.
+      </p>
+
+      <div className={styles.aboutGrid}>
+        <div className={styles.aboutCard}>
+          <span className={styles.aboutCardIcon}>🎤</span>
+          <h3 className={styles.aboutCardTitle}>For Event Creators</h3>
+          <p className={styles.aboutCardText}>
+            Go from idea to live event in minutes. Set your price, upload a cover, and start selling tickets
+            immediately via Paystack — no approval queue, no waiting period.
+            Track every sale, monitor check-ins, and see your attendance rate in real time from your analytics dashboard.
+          </p>
+        </div>
+
+        <div className={styles.aboutCard}>
+          <span className={styles.aboutCardIcon}>🎟️</span>
+          <h3 className={styles.aboutCardTitle}>For Event Attendees</h3>
+          <p className={styles.aboutCardText}>
+            Find events actually worth going to. Browse what's coming up, buy your tickets securely,
+            and get everything you need in one place. No spam, no dark patterns —
+            just your ticket and the date to show up.
+          </p>
+        </div>
+      </div>
+
+      <p className={styles.aboutClosing}>
+        Whether you're packing a venue or planning your weekend — Eventify keeps it simple.
       </p>
     </div>
 

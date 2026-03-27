@@ -1,0 +1,267 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 28px;
+}
+
+/* ── LAYOUT ── */
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── FORM CARD ── */
+
+.formCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 28px 24px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.cardSubtext {
+  font-size: 0.85rem;
+  color: #7a9cb8;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a9cb8;
+}
+
+.select,
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.select:focus,
+.input:focus {
+  border-color: #4f8ef7;
+}
+
+.select:disabled,
+.input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.select option {
+  background: #203a43;
+  color: white;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: #4fd1c5;
+  margin-top: 2px;
+}
+
+.errorText {
+  font-size: 0.88rem;
+  color: #fc8181;
+}
+
+.successText {
+  font-size: 0.88rem;
+  color: #68d391;
+}
+
+.submitBtn {
+  padding: 12px;
+  background: #4f8ef7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #3a7de0;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── REMINDERS LIST ── */
+
+.listSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.reminderList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reminderCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  gap: 16px;
+  transition: border-color 0.15s ease;
+}
+
+.reminderCard:hover {
+  border-color: rgba(79, 209, 197, 0.3);
+}
+
+.reminderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.reminderEventTitle {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reminderMeta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.83rem;
+  color: #a8c0cc;
+}
+
+.reminderMeta span {
+  color: #4fd1c5;
+  font-weight: 600;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.reminderRight {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* ── BADGES ── */
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badgeSent {
+  background: rgba(104, 211, 145, 0.15);
+  color: #68d391;
+  border: 1px solid rgba(104, 211, 145, 0.3);
+}
+
+.badgePending {
+  background: rgba(246, 173, 85, 0.12);
+  color: #f6ad55;
+  border: 1px solid rgba(246, 173, 85, 0.3);
+}
+
+/* ── EMPTY STATE ── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  color: #7a9cb8;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 2.2rem;
+  margin-bottom: 4px;
+}
+
+.emptySubtext {
+  font-size: 0.83rem;
+  color: #4a6d82;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 10px;
+  }
+}

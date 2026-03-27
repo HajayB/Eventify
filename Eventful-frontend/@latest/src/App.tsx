@@ -12,6 +12,12 @@ import CreatorEventPage from "./features/Events/CreatorEventPage";
 import EventeeEventsPage from "./features/Events/EventeeEventsPage";
 import EventeeEventDetailPage from "./features/Events/EventeeEventDetailPage";
 import PaymentCallbackPage from "./features/Payment/PaymentCallbackPage";
+import CreatorAnalyticsPage from "./features/Analytics/CreatorAnalyticsPage";
+import RemindersPage from "./features/Reminders/RemindersPage";
+import EventeeAnalyticsPage from "./features/Eventee/EventeeAnalyticsPage";
+import TicketsPage from "./features/Eventee/TicketsPage";
+import PaymentHistoryPage from "./features/Eventee/PaymentHistoryPage";
+import EventeeRemindersPage from "./features/Eventee/EventeeRemindersPage";
 
 function App(){
 
@@ -33,6 +39,12 @@ function App(){
       <Route path="/eventee/events" element={<EventeeEventsPage />} />
       <Route path="/eventee/events/:eventId" element={<EventeeEventDetailPage />} />
       <Route path="/payment/callback" element={<PaymentCallbackPage />} />
+      <Route path="/creator/analytics" element={<CreatorAnalyticsPage />} />
+      <Route path="/creator/reminder" element={<RemindersPage />} />
+      <Route path="/analytics" element={<EventeeAnalyticsPage />} />
+      <Route path="/tickets" element={<TicketsPage />} />
+      <Route path="/payments" element={<PaymentHistoryPage />} />
+      <Route path="/reminder" element={<EventeeRemindersPage />} />
       </Routes>
     </BrowserRouter>
     </>

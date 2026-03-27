@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getEventById, updateEvent, deleteEvent, type EventsType } from "./EventsService";
 import styles from "./eventDetailModal.module.css";
+import Skeleton from "../../components/Skeleton";
 
 type Props = {
   eventId: string;
@@ -84,7 +85,23 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose}>✕</button>
 
-        {loading && <p className={styles.status}>Loading...</p>}
+        {loading && (
+          <div>
+            <Skeleton height="200px" borderRadius="8px" style={{ marginBottom: "20px" }} />
+            <Skeleton height="28px" width="70%" style={{ marginBottom: "10px" }} />
+            <Skeleton height="14px" style={{ marginBottom: "6px" }} />
+            <Skeleton height="14px" width="85%" style={{ marginBottom: "20px" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
+              {[60, 75, 65, 70, 55].map((w, i) => (
+                <Skeleton key={i} height="16px" width={`${w}%`} />
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "12px" }}>
+              <Skeleton height="40px" width="110px" borderRadius="6px" />
+              <Skeleton height="40px" width="110px" borderRadius="6px" />
+            </div>
+          </div>
+        )}
         {error && <p className={styles.error}>{error}</p>}
 
         {event && !loading && !isEditing && (
