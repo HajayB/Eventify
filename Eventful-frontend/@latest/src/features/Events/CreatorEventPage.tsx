@@ -10,7 +10,7 @@ import { getCreatorEvents, type GetCreatorEventsResponse, type EventsType } from
 
 function CreatorEventPage(){
     const [loading, setLoading] = useState(true);
-    const [open , setOpen] = useState(false);
+    // const [open , setOpen] = useState(false);
     const [creatorData, setCreatorData] = useState<GetCreatorEventsResponse| null>(null);
     const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
     const [refreshKey, setRefreshKey] = useState(0);
