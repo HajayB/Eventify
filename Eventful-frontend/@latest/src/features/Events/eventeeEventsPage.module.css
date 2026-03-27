@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,85 @@
+*{
+  margin:0;
+  padding:0;
+
+}
+#root{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+}
+.container{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1; 
+  padding: 20px;
+  margin-left: 280px;
+}
+
+.createEvent{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+margin-bottom: 70px;
+}
+.formTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color:aliceblue
+}
+.createdH3{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color:aliceblue
+}
+.input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+.input::placeholder {
+    color: #888;
+}
+
+.input:focus {
+    border-color: #4f8ef7;
+}
+
+.submitBtn {
+    width: 50%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+
+.createdEvents{
+display: grid;
+grid-template-columns: repeat(auto-fit, (260px, 1fr));
+gap: 16px;
+margin-top: 20px;
+}
+@media (max-width:1024px) {
+  .content{
+    margin-left: 10px;
+  }
+}

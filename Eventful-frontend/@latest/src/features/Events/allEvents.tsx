@@ -33,14 +33,14 @@ function AllEvents({ onEventClick }: Props) {
     if (page < pagination.totalPages) {
       setPage(prev => prev + 1);
     }
-    console.log("Next page:", pagination.page + 1)
+    
   };
 
   const handlePrev = () => {
     if (page > 1) {
       setPage(prev=> prev - 1);
     }
-    console.log("Previous page:", pagination.page - 1)
+   
   };
   function handleSearchInput(e:any){
     setSearch(e.target.value);

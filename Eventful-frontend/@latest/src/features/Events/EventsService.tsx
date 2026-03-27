@@ -1,10 +1,31 @@
 import axios from "axios";
+import axiosInstance from "../../services/axiosInstance";
 
+
+export type PaginationType = {
+  totalEvents: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
 type GetEventsResponse = {
   events: EventsType[];
-  pagination:any;
+  pagination:PaginationType;
 };
+export type CurrentEventsResponse = {
+  activeEvents: EventsType[];
+  pagination: PaginationType;
+}
 
+export type OldEventsResponse = {
+  pastEvents: EventsType[];
+  pagination: PaginationType;
+}
+
+export type GetCreatorEventsResponse = {
+  CurrentEvents: CurrentEventsResponse;
+  OldEvents: OldEventsResponse;
+}
 export type EventsType = {
   _id: string;
   eventId: string;
@@ -22,6 +43,8 @@ export type EventsType = {
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const eventsUrl = baseUrl + "/events";
+const creatorEventsUrl = baseUrl + "/events/creator/me";
+const paymentsUrl = baseUrl + "/payments";
 
 export async function getEvents(page: number = 1, search:string=""): Promise<GetEventsResponse> {
 
@@ -34,5 +57,62 @@ export async function getEvents(page: number = 1, search:string=""): Promise<Get
     events: response.data.data,
     pagination: response.data.meta
   };
+}
+
+export async function getEventById(id: string): Promise<EventsType> {
+  const response = await axiosInstance.get(`${eventsUrl}/${id}`);
+  return response.data;
+}
+
+export async function updateEvent(
+  id: string,
+  body: {
+    title?: string;
+    description?: string;
+    location?: string;
+    price?: number;
+    totalTickets?: number;
+    startTime?: string;
+    endTime?: string;
+  }
+): Promise<EventsType> {
+  const response = await axiosInstance.put(`${eventsUrl}/${id}`, body);
+  return response.data;
+}
+
+export async function deleteEvent(id: string): Promise<void> {
+  await axiosInstance.delete(`${eventsUrl}/${id}`);
+}
+
+export async function initializePayment(data: {
+  eventId: string;
+  quantity: number;
+  email: string;
+}): Promise<{ authorizationUrl: string; reference: string }> {
+  const response = await axiosInstance.post(`${paymentsUrl}/initialize`, data);
+  return response.data;
+}
+
+export async function getCreatorEvents(page: number = 1, search: string = ""): Promise<GetCreatorEventsResponse> {
+  try {
+    const response = await axiosInstance.get(creatorEventsUrl, {
+      params: { page, search }
+    });
+
+    return {
+      CurrentEvents: {
+        activeEvents: response.data.CurrentEvents.activeEvents,
+        pagination: response.data.CurrentEvents.pagination
+      },
+      OldEvents: {
+        pastEvents: response.data.OldEvents.pastEvents,
+        pagination: response.data.OldEvents.pagination
+      }
+    };
+
+  } catch (error: any) {
+    console.log(error);
+    throw error;
+  }
 }
 

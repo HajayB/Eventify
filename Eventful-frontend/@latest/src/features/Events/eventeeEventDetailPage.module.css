@@ -1,0 +1,207 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+  max-width: 1100px;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  color: #4fd1c5;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.backBtn:hover {
+  color: white;
+}
+
+.coverImage {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.body {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* LEFT — details */
+.details {
+  flex: 1;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1rem;
+  color: #cdd9e5;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.95rem;
+  color: #cdd9e5;
+}
+
+.metaLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4fd1c5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* RIGHT — purchase card */
+.purchaseCard {
+  width: 320px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 28px;
+  position: sticky;
+  top: 30px;
+}
+
+.purchaseTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.purchaseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #cdd9e5;
+  margin-bottom: -8px;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #666;
+}
+
+.input:focus {
+  border-color: #4f8ef7;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cdd9e5;
+  font-size: 0.95rem;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.buyBtn {
+  width: 100%;
+  padding: 14px;
+  background: #4f8ef7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.buyBtn:hover:not(:disabled) {
+  background: #3a7de0;
+}
+
+.buyBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.soldOut {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fc8181;
+}
+
+.statusText {
+  color: #cdd9e5;
+  font-size: 1rem;
+}
+
+.errorText {
+  color: #fc8181;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 10px;
+  }
+
+  .body {
+    flex-direction: column;
+  }
+
+  .purchaseCard {
+    width: 100%;
+    position: static;
+  }
+}

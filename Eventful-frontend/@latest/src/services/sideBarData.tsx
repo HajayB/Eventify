@@ -7,7 +7,7 @@ export const creatorMenu = [
 
 export const eventeeMenu = [
   { name: "Dashboard", path: "/dashboard" },
-  { name: "Events", path: "/events" },
+  { name: "Events", path: "/eventee/events" },
   { name: "Analytics", path: "/analytics" },
   { name: "Reminder", path: "/reminder" },
   { name: "Tickets", path: "/tickets" },

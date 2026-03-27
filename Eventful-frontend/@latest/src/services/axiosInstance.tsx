@@ -7,30 +7,52 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+let isRefreshing = false;
+let refreshQueue: Array<(success: boolean) => void> = [];
+
+function drainQueue(success: boolean) {
+  refreshQueue.forEach((cb) => cb(success));
+  refreshQueue = [];
+}
+
 //RESPONSE INTERCEPTOR
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
-    // prevent infinite loop
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
+      // If a refresh is already in progress, wait for it then retry
+      if (isRefreshing) {
+        return new Promise((resolve, reject) => {
+          refreshQueue.push((success) => {
+            if (success) {
+              resolve(axiosInstance(originalRequest));
+            } else {
+              reject(error);
+            }
+          });
+        });
+      }
+
+      isRefreshing = true;
+
       try {
-        // call refresh endpoint
         await axios.post(
           `${baseUrl}/auth/refresh`,
           {},
           { withCredentials: true }
         );
-
-        // retry original request
+        drainQueue(true);
         return axiosInstance(originalRequest);
       } catch (err) {
-        // if refresh fails → logout
-        window.location.href = "/";
+        drainQueue(false);
+        window.location.href = "/login";
         return Promise.reject(err);
+      } finally {
+        isRefreshing = false;
       }
     }
 

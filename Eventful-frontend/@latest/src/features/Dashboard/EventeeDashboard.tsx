@@ -47,7 +47,7 @@ function EventeeDashboard(){
                     
                     subtitle={new Date(event.startTime).toLocaleDateString()}
                 >
-                    <p>You have: {event.ticketCount}</p>
+                    <p>You have: {event.ticketCount} {event.ticketCount == 1 ? "ticket" : "tickets"}</p>
                 </MiniCard>
                 ))}
             </div>
