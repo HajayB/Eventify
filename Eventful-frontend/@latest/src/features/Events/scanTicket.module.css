@@ -1,0 +1,248 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 280px;
+  max-width: 600px;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 28px;
+}
+
+/* ── EVENT SELECTOR ── */
+
+.selectorCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #a8c0cc;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.select {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.select:focus {
+  border-color: #4f8ef7;
+}
+
+.select option {
+  background: #1a2e3a;
+  color: white;
+}
+
+/* ── PLACEHOLDER ── */
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 24px;
+  color: #7a9cb8;
+  text-align: center;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+}
+
+/* ── SCAN AREA ── */
+
+.scanArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── RESULT BANNER ── */
+
+.resultBanner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  animation: fadeIn 0.2s ease;
+}
+
+.resultValid {
+  background: rgba(72, 187, 120, 0.15);
+  border: 1px solid rgba(72, 187, 120, 0.4);
+}
+
+.resultInvalid {
+  background: rgba(245, 101, 101, 0.15);
+  border: 1px solid rgba(245, 101, 101, 0.4);
+}
+
+.resultIcon {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.resultValid .resultIcon {
+  color: #68d391;
+}
+
+.resultInvalid .resultIcon {
+  color: #fc8181;
+}
+
+.resultMsg {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px;
+}
+
+.resultSub {
+  font-size: 0.82rem;
+  color: #a8c0cc;
+  margin: 0;
+}
+
+/* ── CAMERA CARD ── */
+
+.cameraCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cameraHint {
+  font-size: 0.85rem;
+  color: #7a9cb8;
+  text-align: center;
+  margin: 0;
+}
+
+.qrReader {
+  width: 100%;
+}
+
+/* Override html5-qrcode default styles to fit dark theme */
+.qrReader video {
+  border-radius: 10px;
+}
+
+/* ── MANUAL FALLBACK ── */
+
+.manualSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toggleManual {
+  background: none;
+  border: none;
+  color: #7a9cb8;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: left;
+  padding: 0;
+}
+
+.toggleManual:hover {
+  color: #a8c0cc;
+}
+
+.manualForm {
+  display: flex;
+  gap: 10px;
+}
+
+.manualInput {
+  flex: 1;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.88rem;
+  outline: none;
+  font-family: monospace;
+}
+
+.manualInput::placeholder {
+  color: #5a7a8a;
+}
+
+.manualInput:focus {
+  border-color: #4f8ef7;
+}
+
+.manualBtn {
+  padding: 11px 20px;
+  background: #4f8ef7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.manualBtn:hover:not(:disabled) {
+  background: #3a7de0;
+}
+
+.manualBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 0;
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container { flex-direction: column; }
+  .content { padding: 16px 12px; }
+}

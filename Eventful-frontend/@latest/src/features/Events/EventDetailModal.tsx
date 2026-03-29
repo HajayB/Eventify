@@ -25,6 +25,8 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
   const [totalTickets, setTotalTickets] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [coverImage, setCoverImage] = useState("");
+  const [maxTicketsPerPurchase, setMaxTicketsPerPurchase] = useState("");
 
   useEffect(() => {
     async function fetchEvent() {
@@ -36,8 +38,14 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
         setLocation(data.location);
         setPrice(String(data.price));
         setTotalTickets(String(data.totalTickets));
-        setStartTime(data.startTime ? new Date(data.startTime).toISOString().slice(0, 16) : "");
-        setEndTime(data.endTime ? new Date(data.endTime).toISOString().slice(0, 16) : "");
+        const toLocalInput = (isoStr: string) => {
+          const d = new Date(isoStr);
+          return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+        };
+        setStartTime(data.startTime ? toLocalInput(data.startTime) : "");
+        setEndTime(data.endTime ? toLocalInput(data.endTime) : "");
+        setCoverImage(data.coverImage || "");
+        setMaxTicketsPerPurchase(String(data.maxTicketsPerPurchase ?? ""));
       } catch {
         setError("Failed to load event.");
       } finally {
@@ -59,6 +67,8 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
         totalTickets: Number(totalTickets),
         startTime: startTime ? new Date(startTime).toISOString() : undefined,
         endTime: endTime ? new Date(endTime).toISOString() : undefined,
+        coverImage: coverImage || undefined,
+        maxTicketsPerPurchase: maxTicketsPerPurchase ? Number(maxTicketsPerPurchase) : undefined,
       });
       onSuccess();
     } catch {
@@ -113,8 +123,8 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
             <p className={styles.description}>{event.description}</p>
             <div className={styles.meta}>
               <p><span>Location</span>{event.location}</p>
-              <p><span>Start</span>{new Date(event.startTime).toLocaleString()}</p>
-              <p><span>End</span>{new Date(event.endTime).toLocaleString()}</p>
+              <p><span>Start</span>{new Date(event.startTime).toLocaleString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short" })}</p>
+              <p><span>End</span>{new Date(event.endTime).toLocaleString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short" })}</p>
               <p><span>Price</span>₦{event.price}</p>
               <p><span>Tickets sold</span>{event.ticketsSold} / {event.totalTickets}</p>
             </div>
@@ -145,6 +155,8 @@ function EventDetailModal({ eventId, onClose, onSuccess }: Props) {
             <input className={styles.input} type="datetime-local" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
             <input className={styles.input} type="datetime-local" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
             <input className={styles.input} type="number" value={totalTickets} onChange={(e) => setTotalTickets(e.target.value)} placeholder="Total Tickets" />
+            <input className={styles.input} type="url" value={coverImage} onChange={(e) => setCoverImage(e.target.value)} placeholder="Cover image URL (https://...)" />
+            <input className={styles.input} type="number" min={1} value={maxTicketsPerPurchase} onChange={(e) => setMaxTicketsPerPurchase(e.target.value)} placeholder="Max tickets per purchase" />
             <div className={styles.actions}>
               <button className={styles.editBtn} onClick={handleSave} disabled={saving}>
                 {saving ? "Saving..." : "Save changes"}

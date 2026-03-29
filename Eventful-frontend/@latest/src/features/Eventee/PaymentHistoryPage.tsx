@@ -4,8 +4,10 @@ import { eventeeMenu } from "../../services/sideBarData";
 import Skeleton from "../../components/Skeleton";
 import { getPaymentHistory, resendTicket, type PaymentHistoryItem } from "./EventeeService";
 import styles from "./paymentHistoryPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function PaymentHistoryPage() {
+  usePageTitle("Payment History");
   const [payments, setPayments] = useState<PaymentHistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [resendingRef, setResendingRef] = useState<string | null>(null);
@@ -35,7 +37,7 @@ function PaymentHistoryPage() {
   async function handleResendById(payment: PaymentHistoryItem) {
     setResendingRef(payment._id);
     try {
-      await resendTicket(payment.reference);
+      await resendTicket(payment._id);
       setResendMsg((prev) => ({ ...prev, [payment._id]: "Tickets resent to your email." }));
     } catch (err: any) {
       setResendMsg((prev) => ({
@@ -119,24 +121,39 @@ function PaymentHistoryPage() {
             {filteredPayments.map((payment) => (
               <div key={payment._id} className={styles.paymentCard}>
                 <div className={styles.cardLeft}>
-                  <p className={styles.eventTitle}>{payment.event.title}</p>
-                  <div className={styles.metaRow}>
-                    <span className={styles.metaItem}>
-                      <span className={styles.metaLabel}>Amount</span>
-                      ₦{payment.amount.toLocaleString()}
-                    </span>
-                    <span className={styles.metaDot} />
-                    <span className={styles.metaItem}>
-                      <span className={styles.metaLabel}>Tickets</span>
-                      {payment.quantity}
-                    </span>
-                    <span className={styles.metaDot} />
-                    <span className={styles.metaItem}>
-                      <span className={styles.metaLabel}>Date</span>
-                      {new Date(payment.paidAt).toLocaleDateString("en-NG", { dateStyle: "medium" })}
+                  <div className={styles.cardTopRow}>
+                    <p className={styles.eventTitle}>{payment.event.title}</p>
+                    <span className={`${styles.badge} ${
+                      payment.status === "SUCCESS"
+                        ? styles.badgeSuccess
+                        : payment.status === "FAILED"
+                        ? styles.badgeFailed
+                        : styles.badgePending
+                    }`}>
+                      {payment.status === "SUCCESS" ? "Paid" : payment.status}
                     </span>
                   </div>
-                  <p className={styles.reference}>Ref: {payment.reference}</p>
+
+                  <div className={styles.eventMeta}>
+                    <span>📍 {payment.event.location}</span>
+                    <span>🗓 {new Date(payment.event.startTime).toLocaleString("en-NG", {
+                      timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short",
+                    })}</span>
+                  </div>
+
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaChip}>
+                      ₦{payment.amount.toLocaleString()}
+                    </span>
+                    <span className={styles.metaChip}>
+                      🎟 {payment.quantity} ticket{payment.quantity > 1 ? "s" : ""}
+                    </span>
+                    <span className={styles.metaChipMuted}>
+                      Purchased {new Date(payment.paidAt).toLocaleDateString("en-NG", { dateStyle: "medium" })}
+                    </span>
+                  </div>
+
+                  <p className={styles.reference}>ref: {payment.reference}</p>
 
                   {resendMsg[payment._id] && (
                     <p className={
@@ -149,27 +166,17 @@ function PaymentHistoryPage() {
                   )}
                 </div>
 
-                <div className={styles.cardRight}>
-                  <span className={`${styles.badge} ${
-                    payment.status === "SUCCESS"
-                      ? styles.badgeSuccess
-                      : payment.status === "FAILED"
-                      ? styles.badgeFailed
-                      : styles.badgePending
-                  }`}>
-                    {payment.status === "SUCCESS" ? "Paid" : payment.status}
-                  </span>
-
-                  {payment.status === "SUCCESS" && (
+                {payment.status === "SUCCESS" && (
+                  <div className={styles.cardRight}>
                     <button
                       className={styles.resendBtn}
                       onClick={() => handleResendById(payment)}
                       disabled={resendingRef === payment._id}
                     >
-                      {resendingRef === payment._id ? "Sending..." : "Resend tickets"}
+                      {resendingRef === payment._id ? "Sending..." : "↗ Resend tickets"}
                     </button>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

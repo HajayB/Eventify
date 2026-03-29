@@ -1,43 +1,51 @@
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 22px 24px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom:20px ;
-  max-width: 250px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
+
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-.icon{
-  font-size: 20px;
+  transform: translateY(-3px);
+  border-color: rgba(79, 209, 197, 0.35);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
-  color: #666;
-  gap:10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #7a9cb8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.icon {
+  font-size: 1.2rem;
+  opacity: 0.75;
 }
 
 .value {
-  font-size: 22px;
-  font-weight: 550;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  line-height: 1;
+  margin: 0;
 }
 
 .subtitle {
-  font-size: 19px;
-  color: #5f5757;
+  font-size: 0.85rem;
+  color: #9baebe;
+  margin: 0;
 }
 
 .extra {
-  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #7a9cb8;
+  margin-top: 2px;
 }

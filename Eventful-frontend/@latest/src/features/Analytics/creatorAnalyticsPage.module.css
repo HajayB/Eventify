@@ -264,7 +264,8 @@
 
 @media (max-width: 1024px) {
   .content {
-    margin-left: 10px;
+    margin-left: 0;
+    padding: 20px 16px;
   }
 
   .statsGrid {
@@ -273,6 +274,8 @@
 }
 
 @media (max-width: 600px) {
+  .container { flex-direction: column; }
+  .content { padding: 16px 12px; }
   .statsGrid {
     grid-template-columns: 1fr;
   }

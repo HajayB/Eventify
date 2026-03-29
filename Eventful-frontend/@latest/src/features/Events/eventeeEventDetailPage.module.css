@@ -193,7 +193,8 @@
 
 @media (max-width: 1024px) {
   .content {
-    margin-left: 10px;
+    margin-left: 0;
+    padding: 20px 16px;
   }
 
   .body {
@@ -204,4 +205,10 @@
     width: 100%;
     position: static;
   }
+}
+
+@media (max-width: 600px) {
+  .container { flex-direction: column; }
+  .content { padding: 16px 12px; }
+  .title { font-size: 1.4rem; }
 }

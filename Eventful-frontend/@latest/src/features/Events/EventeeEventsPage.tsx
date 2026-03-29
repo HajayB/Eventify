@@ -4,8 +4,10 @@ import { eventeeMenu } from "../../services/sideBarData";
 import AllEvents from "./allEvents";
 import { type EventsType } from "./EventsService";
 import styles from "./eventeeEventsPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function EventeeEventsPage() {
+  usePageTitle("Browse Events");
   const navigate = useNavigate();
 
   return (

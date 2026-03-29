@@ -11,10 +11,12 @@ import {
   type UnattendedEvent,
 } from "./EventeeService";
 import styles from "./eventeeAnalyticsPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 type Tab = "attended" | "upcoming" | "missed" | "payments";
 
 function EventeeAnalyticsPage() {
+  usePageTitle("Analytics");
   const [paid, setPaid] = useState<PaidEvent[]>([]);
   const [attended, setAttended] = useState<AttendedEvent[]>([]);
   const [unattended, setUnattended] = useState<UnattendedEvent[]>([]);

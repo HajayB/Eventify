@@ -1,0 +1,369 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+}
+
+.inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #4f8ef7;
+  letter-spacing: 0.02em;
+}
+
+.headerLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.linkBtn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #cdd9e5;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.linkBtn:hover {
+  border-color: #4f8ef7;
+  color: white;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #9baebe;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+/* Event cards grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #4f8ef7;
+}
+
+.cardImage {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 16px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.cardMeta {
+  font-size: 0.82rem;
+  color: #9baebe;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardPrice {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4fd1c5;
+  margin-top: 10px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #9baebe;
+}
+
+.emptyState h3 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 8px;
+}
+
+/* Detail page */
+.backBtn {
+  background: transparent;
+  border: none;
+  color: #4fd1c5;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.backBtn:hover { color: white; }
+
+.coverImage {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.body {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.details { flex: 1; }
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #cdd9e5;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.95rem;
+  color: #cdd9e5;
+}
+
+.metaLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4fd1c5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Purchase card */
+.purchaseCard {
+  width: 320px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 28px;
+  position: sticky;
+  top: 30px;
+}
+
+.purchaseTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.purchaseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #cdd9e5;
+  margin-bottom: -8px;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.07);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input::placeholder { color: #666; }
+.input:focus { border-color: #4f8ef7; }
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #cdd9e5;
+  font-size: 0.95rem;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.buyBtn {
+  width: 100%;
+  padding: 14px;
+  background: #4f8ef7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.buyBtn:hover:not(:disabled) { background: #3a7de0; }
+.buyBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.errorText {
+  color: #fc8181;
+  font-size: 0.87rem;
+}
+
+/* Callback / Resend pages */
+.card2 {
+  max-width: 480px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.card2 h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.card2 p {
+  color: #cdd9e5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.refBox {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 1rem;
+  color: #4fd1c5;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.btnRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  padding: 12px 24px;
+  background: #4f8ef7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primaryBtn:hover { background: #3a7de0; }
+
+.ghostBtn {
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #cdd9e5;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ghostBtn:hover { border-color: #4f8ef7; color: white; }
+
+.successMsg {
+  color: #68d391;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .body {
+    flex-direction: column;
+  }
+  .purchaseCard {
+    width: 100%;
+    position: static;
+  }
+}

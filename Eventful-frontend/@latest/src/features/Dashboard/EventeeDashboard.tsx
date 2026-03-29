@@ -6,8 +6,10 @@ import ActivityCard from "../../services/ActivityCard";
 import Sidebar from "../../services/sideBar";
 import { eventeeMenu } from "../../services/sideBarData";
 import styles from "./creatorDashboard.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 function EventeeDashboard(){
 
+    usePageTitle("Dashboard");
     const [eventeeData, setEventeeData] = useState<GetEventeeResponse|null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -60,37 +62,43 @@ function EventeeDashboard(){
         <div className={styles.container}>
         <Sidebar menu={eventeeMenu}/>
         <main className={styles.content}>
-            <h3 className={styles.usernameH3}>Welcome, {eventeeData.userName}</h3>
-            <div className={styles.statSection}> 
-                <MiniCard title="Total Tickets Purchased" icon={"🎟️"} value={eventeeData.stats.ticketsOwned}/>
-                <MiniCard title="Events Attended" icon={"📺"} value={eventeeData.stats.eventsAttended}/>
-                
+            <div className={styles.welcomeRow}>
+              <h3 className={styles.usernameH3}>Welcome back, {eventeeData.userName} 👋</h3>
+              <span className={styles.dateBadge}>{new Date().toLocaleDateString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "long" })}</span>
             </div>
-        <h3 className={styles.h3Headers}>Upcoming Events</h3>
-            <div className={styles.upcomingEventsSection}> 
-                
+
+            <div className={styles.statSection}>
+                <MiniCard title="Tickets Owned" icon={"🎟️"} value={eventeeData.stats.ticketsOwned}/>
+                <MiniCard title="Events Attended" icon={"🎪"} value={eventeeData.stats.eventsAttended}/>
+            </div>
+
+            <div className={styles.sectionHeader}>
+              <h3 className={styles.h3Headers}>Upcoming Events</h3>
+            </div>
+            <div className={styles.upcomingEventsSection}>
                 {eventeeData.upcomingEvents.map((event) => (
                 <MiniCard
                     key={event.eventId}
-                    title={`${event.location}`}
-                    value={event.title}
-                    
-                    subtitle={new Date(event.startTime).toLocaleDateString()}
+                    title={event.title}
+                    subtitle={`📍 ${event.location}`}
+                    value={new Date(event.startTime).toLocaleDateString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium" })}
                 >
-                    <p>You have: {event.ticketCount} {event.ticketCount == 1 ? "ticket" : "tickets"}</p>
+                    <p>{event.ticketCount} {event.ticketCount === 1 ? "ticket" : "tickets"}</p>
                 </MiniCard>
                 ))}
             </div>
-            <h3 className={styles.h3Headers}>Payment History</h3>    
+
+            <div className={styles.sectionHeader}>
+              <h3 className={styles.h3Headers}>Recent Payments</h3>
+            </div>
             <div className={styles.recentActivitySection}>
                 {eventeeData.paymentHistory.map((payment) => (
                 <ActivityCard
-                    key={`${payment.eventTitle} - ?${payment.paidAt}`}                    
-                    eventTitle={`◉ ${payment.eventTitle}`}
-                    quantity={`${payment.quantity} ${payment.quantity == 1 ? "ticket" : "tickets"}`}
-                    amount={payment.amount} 
-                    date={new Date(payment.paidAt).toLocaleDateString()}
-                    
+                    key={`${payment.eventTitle}-${payment.paidAt}`}
+                    eventTitle={payment.eventTitle}
+                    quantity={`${payment.quantity} ${payment.quantity === 1 ? "ticket" : "tickets"}`}
+                    amount={payment.amount}
+                    date={new Date(payment.paidAt).toLocaleDateString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium" })}
                 >
                 </ActivityCard>
                 ))}

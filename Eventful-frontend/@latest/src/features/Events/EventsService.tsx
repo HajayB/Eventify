@@ -38,7 +38,12 @@ export type EventsType = {
   price: number;
   totalTickets: number;
   ticketsSold: number;
+  maxTicketsPerPurchase: number;
   map: any;
+};
+
+export type GuestTodayEventsResponse = {
+  events: EventsType[];
 };
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -74,6 +79,8 @@ export async function updateEvent(
     totalTickets?: number;
     startTime?: string;
     endTime?: string;
+    coverImage?: string;
+    maxTicketsPerPurchase?: number;
   }
 ): Promise<EventsType> {
   const response = await axiosInstance.put(`${eventsUrl}/${id}`, body);
@@ -90,6 +97,29 @@ export async function initializePayment(data: {
   email: string;
 }): Promise<{ authorizationUrl: string; reference: string }> {
   const response = await axiosInstance.post(`${paymentsUrl}/initialize`, data);
+  return response.data;
+}
+
+export async function scanTicket(body: {
+  qrPayload: string;
+  eventId: string;
+}): Promise<{ valid: boolean; message: string; scannedAt?: string }> {
+  const response = await axiosInstance.post(`${baseUrl}/tickets/scan`, body);
+  return response.data;
+}
+
+export async function createEvent(body: {
+  title: string;
+  description: string;
+  location: string;
+  price?: number;
+  totalTickets?: number;
+  startTime?: string;
+  endTime?: string;
+  coverImage?: string;
+  maxTicketsPerPurchase?: number;
+}): Promise<{ message: string; id: string }> {
+  const response = await axiosInstance.post(eventsUrl, body);
   return response.data;
 }
 
@@ -114,5 +144,27 @@ export async function getCreatorEvents(page: number = 1, search: string = ""): P
     console.log(error);
     throw error;
   }
+}
+
+export async function getTodayEvents(): Promise<EventsType[]> {
+  const response = await axios.get(`${eventsUrl}/today`);
+  return response.data.events;
+}
+
+export async function guestInitializePayment(data: {
+  eventId: string;
+  quantity: number;
+  email: string;
+}): Promise<{ authorizationUrl: string; reference: string }> {
+  const response = await axios.post(`${paymentsUrl}/guest/initialize`, data);
+  return response.data;
+}
+
+export async function guestResendTicket(data: {
+  email: string;
+  reference: string;
+}): Promise<{ message: string }> {
+  const response = await axios.post(`${paymentsUrl}/guest/resend`, data);
+  return response.data;
 }
 

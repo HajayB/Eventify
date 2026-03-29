@@ -11,8 +11,10 @@ import {
   type EventAnalytics,
 } from "./AnalyticsService";
 import styles from "./creatorAnalyticsPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function CreatorAnalyticsPage() {
+  usePageTitle("Analytics");
   const [allTime, setAllTime] = useState<AllTimeAnalytics | null>(null);
   const [perEvent, setPerEvent] = useState<PerEventPaymentAnalytics[]>([]);
   const [loading, setLoading] = useState(true);

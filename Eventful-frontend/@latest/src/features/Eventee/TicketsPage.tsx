@@ -5,10 +5,12 @@ import { eventeeMenu } from "../../services/sideBarData";
 import Skeleton from "../../components/Skeleton";
 import { getMyTickets, getTicketQr, type Ticket } from "./EventeeService";
 import styles from "./ticketsPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 type Filter = "all" | "unused" | "used";
 
 function TicketsPage() {
+  usePageTitle("My Tickets");
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<Filter>("all");
@@ -16,6 +18,7 @@ function TicketsPage() {
   const [loadingQr, setLoadingQr] = useState<string | null>(null);
   const [qrError, setQrError] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [showCodeMap, setShowCodeMap] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     async function load() {
@@ -163,6 +166,24 @@ function TicketsPage() {
                             level="M"
                           />
                           <p className={styles.qrHint}>Present this at the event entrance</p>
+
+                          <button
+                            className={styles.showCodeBtn}
+                            onClick={() =>
+                              setShowCodeMap((prev) => ({
+                                ...prev,
+                                [ticket._id]: !prev[ticket._id],
+                              }))
+                            }
+                          >
+                            {showCodeMap[ticket._id] ? "Hide Code" : "Scanner not working? Show Code"}
+                          </button>
+
+                          {showCodeMap[ticket._id] && (
+                            <code className={styles.ticketCode}>
+                              {qrMap[ticket._id]}
+                            </code>
+                          )}
                         </div>
                       )}
                     </div>

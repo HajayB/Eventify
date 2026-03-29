@@ -3,8 +3,10 @@ import styles from "./signup.module.css"
 import { useState } from "react"
 import axios from "axios";
 import{Link, useNavigate} from "react-router-dom";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function SignupPage(){
+  usePageTitle("Sign Up");
     const url = "http://localhost:4000/api/auth/register";
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");

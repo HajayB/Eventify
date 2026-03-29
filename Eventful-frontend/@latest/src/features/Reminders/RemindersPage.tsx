@@ -5,8 +5,10 @@ import { getUserReminders, createReminder, type Reminder } from "./RemindersServ
 import { getEvents, type EventsType } from "../Events/EventsService";
 import Skeleton from "../../components/Skeleton";
 import styles from "./remindersPage.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function RemindersPage() {
+  usePageTitle("Reminders");
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [events, setEvents] = useState<EventsType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,9 +20,13 @@ function RemindersPage() {
   const [remindAt, setRemindAt] = useState("");
 
   const selectedEvent = events.find((e) => e._id === selectedEventId);
-  const maxDateTime = selectedEvent
-    ? new Date(selectedEvent.startTime).toISOString().slice(0, 16)
-    : undefined;
+
+  function toLocalInput(isoStr: string): string {
+    const d = new Date(isoStr);
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  }
+
+  const maxDateTime = selectedEvent ? toLocalInput(selectedEvent.startTime) : undefined;
 
   useEffect(() => {
     async function load() {

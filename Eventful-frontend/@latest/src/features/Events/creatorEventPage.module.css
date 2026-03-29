@@ -41,6 +41,20 @@ margin-bottom: 70px;
     margin-bottom: 20px;
     color:aliceblue
 }
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fieldLabel {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #a8c0cc;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 .input {
     width: 100%;
     padding: 12px 14px;
@@ -78,8 +92,30 @@ grid-template-columns: repeat(auto-fit, (260px, 1fr));
 gap: 16px;
 margin-top: 20px;
 }
+.successMsg {
+  color: #68d391;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.errorMsg {
+  color: #fc8181;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
 @media (max-width:1024px) {
   .content{
-    margin-left: 10px;
+    margin-left: 0;
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    padding: 16px 12px;
   }
 }

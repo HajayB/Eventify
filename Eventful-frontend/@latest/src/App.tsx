@@ -18,6 +18,13 @@ import EventeeAnalyticsPage from "./features/Eventee/EventeeAnalyticsPage";
 import TicketsPage from "./features/Eventee/TicketsPage";
 import PaymentHistoryPage from "./features/Eventee/PaymentHistoryPage";
 import EventeeRemindersPage from "./features/Eventee/EventeeRemindersPage";
+import ChangePasswordPage from "./features/Authentication/ChangePasswordPage";
+import NotFoundPage from "./features/NotFound/NotFoundPage";
+import ScanTicketPage from "./features/Events/ScanTicketPage";
+import GuestEventsPage from "./features/Guest/GuestEventsPage";
+import GuestEventDetailPage from "./features/Guest/GuestEventDetailPage";
+import GuestCallbackPage from "./features/Guest/GuestCallbackPage";
+import GuestResendPage from "./features/Guest/GuestResendPage";
 
 function App(){
 
@@ -45,6 +52,13 @@ function App(){
       <Route path="/tickets" element={<TicketsPage />} />
       <Route path="/payments" element={<PaymentHistoryPage />} />
       <Route path="/reminder" element={<EventeeRemindersPage />} />
+      <Route path="/creator/scan" element={<ScanTicketPage />} />
+      <Route path="/change-password" element={<ChangePasswordPage />} />
+      <Route path="/guest" element={<GuestEventsPage />} />
+      <Route path="/guest/events/:eventId" element={<GuestEventDetailPage />} />
+      <Route path="/guest/callback" element={<GuestCallbackPage />} />
+      <Route path="/guest/resend" element={<GuestResendPage />} />
+      <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
     </>

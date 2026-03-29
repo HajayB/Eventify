@@ -4,8 +4,10 @@ import { FaBars } from "react-icons/fa";
 import UpcomingEvents from "../Events/upcomingEvents"
 import{Link,useNavigate} from "react-router-dom";
 import axios from "axios";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function LandingPage(){
+  usePageTitle("Home");
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const contactUrl = baseUrl+"/notifications/contact"
   const[name, setName] = useState("");
@@ -84,6 +86,7 @@ function LandingPage(){
           <Link to="/events" className={` ${styles.navLinks}`}>Events</Link>
           <a href="/#About" className={` ${styles.navLinks}`}>About</a>
           <a href="/#Contact" className={` ${styles.navLinks}`}>Contact</a>
+          <Link to="/guest" className={` ${styles.navLinks}`}>Buy at Door</Link>
           <Link to="/register" className={` ${styles.navLinks}`}>Signup</Link>
         </div>
 
@@ -101,6 +104,7 @@ function LandingPage(){
               <Link to="/events" onClick={() => setOpen(false)} className={styles.whiteLink}>Events</Link>
               <a href="/#About" onClick={() => setOpen(false)} className={styles.whiteLink}>About</a>
               <a href="/#Contact" onClick={() => setOpen(false)} className={styles.whiteLink}>Contact</a>
+              <Link to="/guest" onClick={() => setOpen(false)} className={styles.whiteLink}>Buy at Door</Link>
               <Link to="/register" onClick={() => setOpen(false)} className={styles.whiteLink}>Signup</Link>
             </div>
           )}

@@ -1,7 +1,9 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import styles from "./paymentCallback.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function PaymentCallbackPage() {
+  usePageTitle("Payment Confirmed");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const reference = searchParams.get("reference");

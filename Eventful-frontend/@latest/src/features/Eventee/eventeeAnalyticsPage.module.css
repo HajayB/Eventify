@@ -247,10 +247,12 @@
 /* ── RESPONSIVE ── */
 
 @media (max-width: 1024px) {
-  .content { margin-left: 10px; }
+  .content { margin-left: 0; padding: 20px 16px; }
   .statsGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .statsGrid { grid-template-columns: 1fr 1fr; }
+  .container { flex-direction: column; }
+  .content { padding: 16px 12px; }
+  .statsGrid { grid-template-columns: 1fr; }
 }

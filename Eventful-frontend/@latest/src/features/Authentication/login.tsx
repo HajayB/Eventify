@@ -3,9 +3,10 @@ import styles from "./signup.module.css"
 import { useState } from "react"
 import{Link,useNavigate} from "react-router-dom";
 import axios from "axios";
-
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function LoginPage(){
+  usePageTitle("Sign In");
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const url = baseUrl+"/auth/login";
     const [email, setEmail] = useState("");
@@ -44,22 +45,22 @@ function LoginPage(){
             const response = await axios.post(url, 
             {email, password}, { withCredentials: true })
         const data = response.data;
-
+        const redirectMessage = data.message + " redirecting to dashboard"        
         if(response.status>= 200 && response.status < 300){
-            displayMessage(data.message, "success");
+            displayMessage(redirectMessage, "success");
             if(data.user.role==="CREATOR"){
                 // Save user (object → must stringify)
                 localStorage.setItem("creator", JSON.stringify(data.user));
                 setTimeout(() => {
                 navigate("/creator/dashboard");
-            }, 4000);
+            }, 2000);
             }
             else{
                 // Save user (object → must stringify)
                 localStorage.setItem("eventee", JSON.stringify(data.user));                
                 setTimeout(() => {
                 navigate("/dashboard");
-            }, 4000);
+            }, 2000);
             }
         }
     }

@@ -5,12 +5,14 @@ import Sidebar from "../../services/sideBar";
 import { eventeeMenu } from "../../services/sideBarData";
 import styles from "./eventeeEventDetailPage.module.css";
 import Skeleton from "../../components/Skeleton";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 function EventeeEventDetailPage() {
   const { eventId } = useParams<{ eventId: string }>();
   const navigate = useNavigate();
 
   const [event, setEvent] = useState<EventsType | null>(null);
+  usePageTitle(event?.title ?? "Event Details");
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
@@ -133,11 +135,11 @@ function EventeeEventDetailPage() {
               </div>
               <div className={styles.metaItem}>
                 <span className={styles.metaLabel}>Start</span>
-                <span>{new Date(event.startTime).toLocaleString()}</span>
+                <span>{new Date(event.startTime).toLocaleString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short" })}</span>
               </div>
               <div className={styles.metaItem}>
                 <span className={styles.metaLabel}>End</span>
-                <span>{new Date(event.endTime).toLocaleString()}</span>
+                <span>{new Date(event.endTime).toLocaleString("en-NG", { timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short" })}</span>
               </div>
               <div className={styles.metaItem}>
                 <span className={styles.metaLabel}>Price</span>
