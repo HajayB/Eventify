@@ -117,5 +117,9 @@ margin-top: 20px;
   }
   .content {
     padding: 16px 12px;
+    overflow-x: hidden;
+  }
+  .createEvent {
+    grid-template-columns: 1fr;
   }
 }

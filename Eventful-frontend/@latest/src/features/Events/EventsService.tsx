@@ -107,7 +107,7 @@ export async function scanTicket(body: {
   const response = await axiosInstance.post(`${baseUrl}/tickets/scan`, body);
   return response.data;
 }
-
+ 
 export async function createEvent(body: {
   title: string;
   description: string;

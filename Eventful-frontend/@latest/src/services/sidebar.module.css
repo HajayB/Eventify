@@ -57,6 +57,7 @@
   left: 0;
   transition: transform 0.3s ease;
   z-index: 1000;
+  overflow-y: auto;
 }
 
 /* Open / Close states */
@@ -72,8 +73,8 @@
 .navs {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  margin-top: 40px;
+  gap: 6px;
+  margin-top: 24px;
 }
 
 /* Base styles shared by both link and active */
